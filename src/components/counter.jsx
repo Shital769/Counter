@@ -35,14 +35,14 @@ class Counter extends Component {
             onClick={() => this.handleIncrement({ id: 1 })}
             className="btn btn-secondary btn-sm"
           >
-            <i class="fa-solid fa-plus">Increment</i>
+            <i className="fa-solid fa-plus">Increment</i>
           </button>{"   "}
           <button
             // passing event handler
             onClick={() => this.handleDecrement({ id: 1 })}
             className="btn btn-secondary btn-sm"
           >
-            <i class="fa-solid fa-plus">Decrement</i>
+            <i className="fa-solid fa-plus">Decrement</i>
           </button> 
         </div>
       </React.Fragment>

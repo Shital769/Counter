@@ -5,41 +5,60 @@ class Counter extends Component {
     tags: ["tag1", "tag2", "tag3"],
   };
 
-//defining a method for increment
-handleIncrement() {
-    console.log("Increment Clicked");
-}
+  //defining a method for increment
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  doHandleIncrement = () => {
+    this.handleIncrement({ id: 1 });
+  };
+
+  handleDecrement = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  doHandleDecrement = () => {
+    this.handleDecrement({ id: 1 });
+  };
 
   render() {
     return (
-      <div>
-        {/* we can put any valid javascript expression inside this curly braces down below. */}
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {/* mapping string tag into plain javaScript object */}
-          {this.state.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-      </div>
+      <React.Fragment>
+        <p>Showing counted items in the database.</p>
+
+        <div>
+          {/* we can put any valid javascript expression inside this curly braces down below. */}
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+          <button
+            // passing event handler
+            onClick={() => this.handleIncrement({ id: 1 })}
+            className="btn btn-secondary btn-sm"
+          >
+            <i class="fa-solid fa-plus">Increment</i>
+          </button>{"   "}
+          <button
+            // passing event handler
+            onClick={() => this.handleDecrement({ id: 1 })}
+            className="btn btn-secondary btn-sm"
+          >
+            <i class="fa-solid fa-plus">Decrement</i>
+          </button> 
+        </div>
+      </React.Fragment>
     );
   }
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
     classes += this.state.count === 0 ? "warning" : "primary";
-   return classes;
+    return classes;
   }
 
- formatCount() {
-   const { count } = this.state;
-   return count === 0 ? "Zero" : count;
- }
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
+  }
 }
 
 export default Counter;
-
-
-
- 
